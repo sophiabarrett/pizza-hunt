@@ -21,6 +21,7 @@ const pizzaController = {
             .json({ message: `No pizza found with id ${params.id}!` });
           return;
         }
+        res.json(dbPizzaData);
       })
       .catch((err) => {
         console.log(err);
