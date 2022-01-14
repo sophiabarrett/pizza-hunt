@@ -1,1 +1,6 @@
-# pizza-hunt
+# Pizza Hunt
+
+## Technologies Used:
+* MongoDB
+* Mongoose
+* IndexedDB
