@@ -9,9 +9,12 @@ const ReplySchema = new Schema(
     },
     replyBody: {
       type: String,
+      required: [true, "Comment cannot be blank."],
+      trim: true,
     },
     writtenBy: {
       type: String,
+      required: [true, "Name is required."],
     },
     createdAt: {
       type: Date,
@@ -30,9 +33,12 @@ const CommentSchema = new Schema(
   {
     writtenBy: {
       type: String,
+      required: [true, "Name is required."],
     },
     commentBody: {
       type: String,
+      required: [true, "Comment cannot be blank."],
+      trim: true,
     },
     createdAt: {
       type: Date,
