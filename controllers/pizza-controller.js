@@ -49,7 +49,12 @@ const pizzaController = {
 
   // update pizza
   updatePizza({ params, body }, res) {
-    Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true }) // { new: true } instructs mongoose to return the updated version of the document
+    Pizza.findOneAndUpdate(
+      { _id: params.id }, body,
+      // new instructs mongoose to return the updated version of the document
+      // runValidators will run validation setup in the schema on update
+      { new: true, runValidators: true }
+    ) 
       .then((dbPizzaData) => {
         if (!dbPizzaData) {
           res

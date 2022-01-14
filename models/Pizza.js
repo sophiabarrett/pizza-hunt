@@ -6,9 +6,13 @@ const PizzaSchema = new Schema(
   {
     pizzaName: {
       type: String,
+      required: [true, "Pizza Name is required."],
+      trim: true,
     },
     createdBy: {
       type: String,
+      required: [true, "Creator's Name is required."],
+      trim: true,
     },
     createdAt: {
       type: Date,
@@ -18,6 +22,9 @@ const PizzaSchema = new Schema(
     size: {
       type: String,
       default: "Large",
+      required: [true, "Pizza Size selection is required."],
+      enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
+      default: 'Large'
     },
     toppings: [],
     comments: [
@@ -38,7 +45,10 @@ const PizzaSchema = new Schema(
 
 // get total count of comments and replies on retrieval
 PizzaSchema.virtual("commentCount").get(function () {
-  return this.comments.reduce((total, comment) => total + comment.replies.length + 1, 0);
+  return this.comments.reduce(
+    (total, comment) => total + comment.replies.length + 1,
+    0
+  );
 });
 
 // create the pizza model
